@@ -76,10 +76,10 @@ export class DatosComponent implements OnInit {
   }
   
   noAdministrador(control: FormControl): Promise<any>| Observable<any>{
-    let promesa = new Promise(
+    let promesa_2 = new Promise(
       (resolve, reject)=> {
         setTimeout(() => {
-              if(control.value.toLowerCase( ) === 'administrador'){
+              if(control.value === 'administrador'){
                 resolve({existe:true})
               }else{
                 resolve(null);
@@ -88,6 +88,6 @@ export class DatosComponent implements OnInit {
           },3000);
       }
     );
-    return promesa;
+    return promesa_2;
   }
 }
