@@ -43,7 +43,7 @@
             <div *ngIf="forma.get('usuario').errors?.required" class="invalid-feedback">
                 <small>usuario necesario</small>
             </div>
-            <div *ngIf="forma.get('usuario').errors?.existeUsuario" class="invalid-feedback">
+            <div *ngIf="forma.get('usuario').errors?.existe" class="invalid-feedback">
                 <small>Usuario ya existe</small>
             </div>
         </div>
@@ -68,7 +68,7 @@
             <div *ngIf="forma.get('pass2').errors?.required" class="invalid-feedback">
                 <small>password necesario</small>
             </div>
-            <div *ngIf="forma.get('pass2').errors?.noIgual" class="invalid-feedback">
+            <div *ngIf="forma.get('pass2').errors?.noigual" class="invalid-feedback">
                 <small>password no coincide</small>
             </div>
         </div>
@@ -85,7 +85,7 @@
             <div *ngIf="forma.get('cargo').errors?.minlength" class="invalid-feedback">
                 <small>Por lo menos debe tener 2 caracteres</small>
             </div>
-            <div *ngIf="forma.get('cargo').errors?.noAdministrador" class="invalid-feedback">
+            <div *ngIf="forma.get('cargo').errors?.admin" class="invalid-feedback">
                 <small>Cargo no puede ser Administrador</small>
             </div>
         </div>
@@ -134,7 +134,7 @@
     </form>
 </div>
 <div class="p-2">
-    status del usuario: {{ forma.controls.cargo.status }}
+    status del cargo: {{ forma.controls.cargo.status }}
 </div>
 <div class="p-2">
     status del usuario: {{ forma.controls.usuario.status }}

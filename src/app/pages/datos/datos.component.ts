@@ -80,7 +80,7 @@ export class DatosComponent implements OnInit {
       (resolve, reject)=> {
         setTimeout(() => {
               if(control.value === 'administrador'){
-                resolve({existe:true})
+                resolve({admin:true})
               }else{
                 resolve(null);
               }
