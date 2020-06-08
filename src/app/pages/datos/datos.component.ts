@@ -19,6 +19,7 @@ export class DatosComponent implements OnInit {
       usuario: new FormControl('', [Validators.required], this.existeUsuario),
       pass: new FormControl('', [Validators.required]),
       pass2: new FormControl('', Validators.required),
+      cargo: new FormControl('', [Validators.required, Validators.minLength(2), this.noAdministrador]),
       correo: new FormControl('', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]),
       cliente: new FormControl('', Validators.required),
       vacaciones: new FormControl(false, Validators.required),
@@ -63,6 +64,22 @@ export class DatosComponent implements OnInit {
       (resolve, reject)=> {
         setTimeout(() => {
               if(control.value === 'ricky'){
+                resolve({existe:true})
+              }else{
+                resolve(null);
+              }
+
+          },3000);
+      }
+    );
+    return promesa;
+  }
+  
+  noAdministrador(control: FormControl): Promise<any>| Observable<any>{
+    let promesa = new Promise(
+      (resolve, reject)=> {
+        setTimeout(() => {
+              if(control.value.toLowerCase( ) === 'administrador'){
                 resolve({existe:true})
               }else{
                 resolve(null);

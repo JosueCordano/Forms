@@ -25,7 +25,11 @@
                 <input type="text"
                 class="form-control"
                 formControlName="apellido"
+                [ngClass]="{'is-invalid':forma.get('nombreCompleto.apellido').invalid && forma.get('nombreCompleto.apellido').touched}"
                 />
+                <div *ngIf="forma.get('nombreCompleto.apellido').errors?.required" class="invalid-feedback">
+                    <small>nombre necesario</small>
+                </div>
             </div>
         </div>
         
@@ -34,28 +38,70 @@
             <input type="text"
             class="form-control"
             formControlName="usuario"
+            [ngClass]="{'is-invalid':forma.get('usuario').invalid && forma.get('usuario').touched}"
             />
+            <div *ngIf="forma.get('usuario').errors?.required" class="invalid-feedback">
+                <small>usuario necesario</small>
+            </div>
+            <div *ngIf="forma.get('usuario').errors?.existeUsuario" class="invalid-feedback">
+                <small>Usuario ya existe</small>
+            </div>
         </div>
         <div class="form-group">
             <label >Password</label>
             <input type="password"
             class="form-control"
             formControlName="pass"
+            [ngClass]="{'is-invalid':forma.get('pass').invalid && forma.get('pass').touched}"
             />
+            <div *ngIf="forma.get('pass').errors?.required" class="invalid-feedback">
+                <small>password necesario</small>
+            </div>
         </div>
         <div class="form-group">
             <label >Confirme su password</label>
             <input type="password"
             class="form-control"
             formControlName="pass2"
+            [ngClass]="{'is-invalid':forma.get('pass2').invalid && forma.get('pass2').touched}"
             />
+            <div *ngIf="forma.get('pass2').errors?.required" class="invalid-feedback">
+                <small>password necesario</small>
+            </div>
+            <div *ngIf="forma.get('pass2').errors?.noIgual" class="invalid-feedback">
+                <small>password no coincide</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="cargo">Cargo</label>
+            <input type="text"
+            class="form-control"
+            formControlName="cargo"
+            [ngClass]="{'is-invalid':forma.get('cargo').invalid && forma.get('cargo').touched}"
+            />
+            <div *ngIf="forma.get('cargo').errors?.required" class="invalid-feedback">
+                <small>cargo necesario</small>
+            </div>
+            <div *ngIf="forma.get('cargo').errors?.minlength" class="invalid-feedback">
+                <small>Por lo menos debe tener 2 caracteres</small>
+            </div>
+            <div *ngIf="forma.get('cargo').errors?.noAdministrador" class="invalid-feedback">
+                <small>Cargo no puede ser Administrador</small>
+            </div>
         </div>
         <div class="form-group">
             <label for="correo">Correo</label>
             <input type="text"
             class="form-control"
             formControlName="correo"
+            [ngClass]="{'is-invalid':forma.get('correo').invalid && forma.get('correo').touched}"
             />
+            <div *ngIf="forma.get('correo').errors?.required" class="invalid-feedback">
+                <small>correo necesario</small>
+            </div>
+            <div *ngIf="forma.get('correo').errors?.pattern" class="invalid-feedback">
+                <small>formato incorrecto de correo</small>
+            </div>
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect2">Cliente</label>
